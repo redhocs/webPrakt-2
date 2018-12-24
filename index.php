@@ -43,7 +43,7 @@
 			?>
 		</table>
 		<?php
-	} elseif ($search[0]=='d' or $search[0]=='D'){
+	} else if ($search[0]=='d' or $search[0]=='D'){
 		?>
 		<div>Daftar Pasien Dirawat</div>
 		<table border="1">
@@ -56,9 +56,9 @@
 		$q=mysqli_query($koneksi, "select * from tbl_rm where id_dokter='$search'");
 		while ($rekammedis=mysqli_fetch_array($q)) {
 			$q1=mysqli_query($koneksi, "select * from tbl_dokter where id_dokter='$search'");
-			$rekampasien=mysqli_fetch_array($q1);
+			$rekamdokter=mysqli_fetch_array($q1);
 			$q3=mysqli_query($koneksi, "select * from tbl_pasien where id_pasien='{$rekammedis['id_pasien']}'");
-			$rekamdokter=mysqli_fetch_array($q3);
+			$rekampasien=mysqli_fetch_array($q3);
 			?>
 				<tr>
 					<td><?=$rekamdokter['nama']?></td>
@@ -70,12 +70,12 @@
 		?>
 	</table>
 	<?php
-} elseif (is_null($search)) {
+} else if (is_null($search)) {
 	?>
 	<div>Daftar Pasien</div>
 	<table border="1">
 		<tr>
-			<td>ID DOKTER</td>
+			<td>ID Dokter</td>
 			<td>Nama Dokter</td>
 			<td>Alamat Dokter</td>
 		</tr>
